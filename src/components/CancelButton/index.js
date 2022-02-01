@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const CancelButton = styled.button`
 
     width: 90%;
     height: 58px;
     margin-bottom: 11px;
 
-    background-color: #A328D6;
+    background: none;
 
     border-radius: 5px;
 
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 23px;
 
@@ -18,4 +18,4 @@ const Button = styled.button`
 
 `
 
-export default Button;
+export default CancelButton;

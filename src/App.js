@@ -1,9 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Deposit from './pages/Deposit';
-import Payment from './pages/Payment';
-import Historic from './pages/Historic'
+import { Login, Register, Historic, Deposit, Payment } from './pages';
 
 export default function App() {
 

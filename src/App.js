@@ -13,7 +13,7 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Login />} />
                     <Route path='/register' element={<Register />} />
-                    <Route path='/register' element={<Historic />} />
+                    <Route path='/historic' element={<Historic />} />
                     <Route path='/deposit' element={<Deposit />} />
                     <Route path='/payment' element={<Payment />} />
                 </Routes>

@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Deposit from './pages/Deposit';
 import Payment from './pages/Payment';
+import Historic from './pages/Historic'
 
 export default function App() {
 
@@ -12,6 +13,7 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Login />} />
                     <Route path='/register' element={<Register />} />
+                    <Route path='/register' element={<Historic />} />
                     <Route path='/deposit' element={<Deposit />} />
                     <Route path='/payment' element={<Payment />} />
                 </Routes>

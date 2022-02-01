@@ -28,29 +28,23 @@ export default function Login() {
                 <img src={MyWallet} alt="MyWallet" />
 
                 <Form onSubmit={handleSubmit}>
-
                     <Input
                         type='email'
                         name='email'
-                        placeholder='email'
+                        placeholder='E-mail'
                         value={formData.email}
                         onChange={handleChange}
                     />
-
-
                     <Input
                         type='password'
                         name='password'
-                        placeholder='senha'
+                        placeholder='Senha'
                         value={formData.password}
                         onChange={handleChange}
                     />
-
                     <Button>Entrar</Button>
 
                     <StyledLink to='/register'>Primeira vez? Cadastre-se!</StyledLink>
-
-
                 </Form>
             </Container>
         </>

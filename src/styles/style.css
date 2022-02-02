@@ -3,5 +3,9 @@
 }
 
 body {
-    background-color: #8C11BE;
+    background-image: linear-gradient(120deg, #400059,#8C11BE);
+}
+
+.hidden{
+    display: none;
 }

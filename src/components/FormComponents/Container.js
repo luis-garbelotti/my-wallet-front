@@ -13,6 +13,7 @@ const Container = styled.div`
 
     img {
         margin-bottom: 24px;
+        width: 147px;
     }
 `
 

@@ -16,8 +16,15 @@ function register(body) {
     return promise;
 }
 
+function login(body) {
+    const promise = axios.post(`${BASE_URL}/`, body);
+
+    return promise;
+}
+
 const api = {
-    register
+    register,
+    login
 }
 
 export default api;

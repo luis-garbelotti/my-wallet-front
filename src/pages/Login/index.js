@@ -1,4 +1,6 @@
 import { Button, Container, Form, Input, StyledLink } from '../../components/FormComponents';
+import { Invalid } from '../../components/Invalid';
+import api from '../../services/api';
 import MyWallet from '../../assets/images/MyWallet.png';
 import { Bars } from 'react-loader-spinner';
 import { useState } from 'react';
@@ -8,6 +10,8 @@ export default function Login() {
 
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [hidden, setHidden] = useState('hidden');
     const navigate = useNavigate();
 
     function handleChange(e) {
@@ -17,7 +21,24 @@ export default function Login() {
     function handleSubmit(e) {
         e.preventDefault();
 
+        if (!formData.email || !formData.password) {
+            setError('inputs')
+            setHidden('');
+            return;
+        }
+
         setIsLoading(true);
+
+        const promise = api.login({ ...formData });
+        promise.then(() => {
+            setIsLoading(false);
+            navigate('/historic');
+        });
+        promise.catch((error) => {
+            setIsLoading(false);
+            setError('post');
+        })
+
     }
 
     return (
@@ -42,6 +63,10 @@ export default function Login() {
                         onChange={handleChange}
                         disabled={isLoading}
                     />
+                    <Invalid className={`${hidden}`}>{
+                        error === 'inputs' ? 'Preencha todos os campos corretamente.' :
+                            error === 'post' ? 'Email ou senha inválidos.' : null}
+                    </Invalid>
                     <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Entrar'}</Button>
 
                     <StyledLink to='/register'>Primeira vez? Cadastre-se!</StyledLink>

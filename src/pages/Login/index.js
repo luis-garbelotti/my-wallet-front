@@ -1,15 +1,13 @@
-import Container from '../../components/FormComponents/Container';
-import Form from '../../components/FormComponents/Form';
-import Input from '../../components/FormComponents/Input';
-import Button from '../../components/FormComponents/Button';
-import StyledLink from '../../components/FormComponents/StyledLink';
+import { Button, Container, Form, Input, StyledLink } from '../../components/FormComponents';
 import MyWallet from '../../assets/images/MyWallet.png';
+import { Bars } from 'react-loader-spinner';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
 
     const [formData, setFormData] = useState({ email: '', password: '' });
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     function handleChange(e) {
@@ -19,7 +17,7 @@ export default function Login() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        navigate('/historic')
+        setIsLoading(true);
     }
 
     return (
@@ -34,6 +32,7 @@ export default function Login() {
                         placeholder='E-mail'
                         value={formData.email}
                         onChange={handleChange}
+                        disabled={isLoading}
                     />
                     <Input
                         type='password'
@@ -41,8 +40,9 @@ export default function Login() {
                         placeholder='Senha'
                         value={formData.password}
                         onChange={handleChange}
+                        disabled={isLoading}
                     />
-                    <Button>Entrar</Button>
+                    <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Entrar'}</Button>
 
                     <StyledLink to='/register'>Primeira vez? Cadastre-se!</StyledLink>
                 </Form>

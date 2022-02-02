@@ -5,6 +5,10 @@ const Button = styled.button`
     width: 90%;
     height: 58px;
     margin-bottom: 11px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background-color: #A328D6;
 
@@ -15,6 +19,11 @@ const Button = styled.button`
     line-height: 23px;
 
     color: #fff;
+
+    :disabled{
+        opacity: 0.9;
+        background-color: #fff;
+    }
 
 `
 

@@ -16,7 +16,11 @@ const Input = styled.input`
         font-size: 20px;
         font-weight: 400;
 
-        
+    }
+
+    :disabled {
+        opacity: 0.7;
+        background-color: #fff;
     }
 
 `

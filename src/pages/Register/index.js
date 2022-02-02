@@ -41,8 +41,13 @@ export default function Register() {
             setIsLoading(false);
             navigate('/')
         });
-        promise.catch((e) => {
-            setError('post')
+        promise.catch((error) => {
+            setHiddenMessage('');
+            if (error.response.status === 409) {
+                setError('email');
+            } else {
+                setError('post')
+            }
             setIsLoading(false);
         })
     }
@@ -89,7 +94,8 @@ export default function Register() {
                     <Invalid className={`${hiddenMessage}`}>{
                         error === 'password' ? 'Confirme sua senha.' :
                             error === 'inputs' ? 'Preencha todos os campos corretamente.' :
-                                error === 'post' ? 'Tente novamente.' : null
+                                error === 'post' ? 'Tente novamente.' :
+                                    error === 'email' ? 'Email já cadastrado.' : null
                     } </Invalid>
 
                     <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Cadastrar'}</Button>

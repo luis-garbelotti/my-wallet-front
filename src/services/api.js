@@ -22,9 +22,16 @@ function login(body) {
     return promise;
 }
 
+function deposit(body) {
+    const promise = axios.post(`${BASE_URL}/`, body);
+
+    return promise;
+}
+
 const api = {
     register,
-    login
+    login,
+    deposit
 }
 
 export default api;

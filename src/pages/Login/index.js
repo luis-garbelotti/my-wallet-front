@@ -34,11 +34,11 @@ export default function Login() {
             setIsLoading(false);
             navigate('/historic');
         });
-        promise.catch((error) => {
+        promise.catch(() => {
+            setHidden('');
             setIsLoading(false);
             setError('post');
-        })
-
+        });
     }
 
     return (

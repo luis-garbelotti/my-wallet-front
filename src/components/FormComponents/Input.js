@@ -12,9 +12,10 @@ const Input = styled.input`
     
     ::placeholder{
 
-        color: #000000;
+        color: #666666;
         font-size: 20px;
         font-weight: 400;
+        font-style: italic;
 
     }
 

@@ -1,8 +1,12 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header"
 import { Content, Container } from './style';
+import useAuth from "../../hooks/useAuth";
 
 export default function Historic() {
+
+    const { auth } = useAuth();
+
     return (
         <>
             <Header />

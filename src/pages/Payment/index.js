@@ -7,6 +7,7 @@ import CancelButton from '../../components/CancelButton';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 export default function Deposit() {
 
@@ -14,6 +15,7 @@ export default function Deposit() {
     const [error, setError] = useState('');
     const [hidden, setHidden] = useState('hidden');
     const [isLoading, setIsLoading] = useState(false);
+    const { auth } = useAuth();
     const navigate = useNavigate();
 
     function handleChange(e) {

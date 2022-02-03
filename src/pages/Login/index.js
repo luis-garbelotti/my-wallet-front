@@ -5,6 +5,7 @@ import MyWallet from '../../assets/images/MyWallet.png';
 import { Bars } from 'react-loader-spinner';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 export default function Login() {
 
@@ -12,6 +13,7 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [hidden, setHidden] = useState('hidden');
+    const { login, auth } = useAuth();
     const navigate = useNavigate();
 
     function handleChange(e) {
@@ -30,7 +32,8 @@ export default function Login() {
         setIsLoading(true);
 
         const promise = api.login({ ...formData });
-        promise.then(() => {
+        promise.then((response) => {
+            login(response.data);
             setIsLoading(false);
             navigate('/historic');
         });

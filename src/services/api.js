@@ -28,10 +28,17 @@ function deposit(body) {
     return promise;
 }
 
+function payment(body) {
+    const promise = axios.post(`${BASE_URL}/`, body);
+
+    return promise;
+}
+
 const api = {
     register,
     login,
-    deposit
+    deposit,
+    payment
 }
 
 export default api;

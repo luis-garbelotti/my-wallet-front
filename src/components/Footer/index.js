@@ -1,4 +1,4 @@
-import { Container, DepositButton, PaymentButton } from './style';
+import { Container, FooterButton } from './style';
 import minusCircle from '../../assets/images/minus-circle.png';
 import plusCircle from '../../assets/images/plus-circle.png';
 import { useNavigate } from 'react-router-dom';
@@ -11,15 +11,15 @@ export default function Footer() {
         <>
             <Container>
 
-                <DepositButton onClick={() => navigate('/deposit')}>
+                <FooterButton onClick={() => navigate('/deposit')}>
                     <img src={plusCircle} alt='plus' />
                     <p>Nova entrada</p>
-                </DepositButton>
+                </FooterButton>
 
-                <PaymentButton onClick={() => navigate('/payment')}>
+                <FooterButton onClick={() => navigate('/payment')}>
                     <img src={minusCircle} alt='minus' />
                     <p>Nova saída</p>
-                </PaymentButton>
+                </FooterButton>
 
             </Container>
         </>

@@ -11,11 +11,11 @@ import useAuth from '../../hooks/useAuth';
 
 export default function Deposit() {
 
-    const [paymentData, setPaymentData] = useState({ description: '', value: '', type: 'payment' });
+    const { auth } = useAuth();
+    const [paymentData, setPaymentData] = useState({ description: '', value: '', type: 'payment', userId: auth._id });
     const [error, setError] = useState('');
     const [hidden, setHidden] = useState('hidden');
     const [isLoading, setIsLoading] = useState(false);
-    const { auth } = useAuth();
     const navigate = useNavigate();
 
     function handleChange(e) {
@@ -43,7 +43,6 @@ export default function Deposit() {
             setIsLoading(false);
             setError('post');
         });
-
     }
 
     return (
@@ -52,7 +51,6 @@ export default function Deposit() {
                 <Header>Nova Saída</Header>
                 <Content>
                     <Form onSubmit={handlePayment}>
-
                         <Input
                             type='text'
                             name='value'

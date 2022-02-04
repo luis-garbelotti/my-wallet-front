@@ -23,13 +23,21 @@ function login(body) {
 }
 
 function deposit(body) {
-    const promise = axios.post(`${BASE_URL}/`, body);
+    const promise = axios.post(`${BASE_URL}/deposit`, body);
 
     return promise;
 }
 
 function payment(body) {
-    const promise = axios.post(`${BASE_URL}/`, body);
+    const promise = axios.post(`${BASE_URL}/payment`, body);
+
+    return promise;
+}
+
+function getTransactions(token) {
+    const config = createConfig(token);
+
+    const promise = axios.get(`${BASE_URL}/historic`, config);
 
     return promise;
 }
@@ -38,7 +46,8 @@ const api = {
     register,
     login,
     deposit,
-    payment
+    payment,
+    getTransactions
 }
 
 export default api;

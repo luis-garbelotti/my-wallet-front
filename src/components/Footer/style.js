@@ -21,7 +21,6 @@ const Container = styled.div`
         text-align: left;
 
         color: #fff;
-
     }
 
     img {
@@ -35,22 +34,9 @@ const Container = styled.div`
 
 `
 
-const PaymentButton = styled.button`
+const FooterButton = styled.button`
 
-    width: 155px;
-    height: 114px;
-
-    background-color: #A328D6;
-
-    border-radius: 5px;
-
-    position: relative;
-
-`
-
-const DepositButton = styled.button`
-
-    width: 155px;
+    width: 48%;
     height: 114px;
 
     background-color: #A328D6;
@@ -63,6 +49,5 @@ const DepositButton = styled.button`
 
 export {
     Container,
-    PaymentButton,
-    DepositButton
+    FooterButton
 }

@@ -11,11 +11,11 @@ import useAuth from "../../hooks/useAuth";
 
 export default function Deposit() {
 
-    const [depositData, setDepositData] = useState({ description: '', value: '', type: 'deposit' });
+    const { auth } = useAuth();
+    const [depositData, setDepositData] = useState({ description: '', value: '', type: 'deposit', userId: auth._id });
     const [error, setError] = useState('');
     const [hidden, setHidden] = useState('hidden');
     const [isLoading, setIsLoading] = useState(false);
-    const { auth } = useAuth();
     const navigate = useNavigate();
 
     function handleChange(e) {
@@ -52,7 +52,6 @@ export default function Deposit() {
                 <Header>Nova Entrada</Header>
                 <Content>
                     <Form onSubmit={handleDeposit}>
-
                         <Input
                             type='text'
                             name='value'

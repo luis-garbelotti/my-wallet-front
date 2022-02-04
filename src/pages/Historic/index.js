@@ -58,7 +58,7 @@ export default function Historic() {
                                             <div className="date">{transaction.date}</div>
                                             <div className="description">{transaction.description}</div>
                                         </div>
-                                        <div className="group rigth">
+                                        <div className="group right">
                                             <div className="value">{`R$ ${transaction.value}`}</div>
                                             <button className="delete">X</button>
                                         </div>

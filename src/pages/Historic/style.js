@@ -85,10 +85,11 @@ const TransactionsContent = styled.div`
         align-items: flex-start;
     }
     
-    .rigth {
+    .right {
         width: auto;
         display: flex;
         justify-content: space-between;
+        text-align: right;
     }
 
     .date {

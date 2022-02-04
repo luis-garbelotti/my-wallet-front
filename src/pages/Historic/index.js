@@ -2,16 +2,20 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Balance from "../../components/Balance";
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Content, Container, Transactions, TransactionsContent, HeaderTransactions } from './style';
 import useAuth from "../../hooks/useAuth";
+import useTransaction from '../../hooks/useTransaction'
 import api from '../../services/api'
 
 export default function Historic() {
 
-    const { auth } = useAuth();
+    const { auth } = useAuth()
+    const { updateTransaction } = useTransaction();
     const [haveTransactions, setHaveTransactions] = useState(false);
     const [transactions, setTransactions] = useState(false);
     const [balance, setBalance] = useState();
+    const navigate = useNavigate();
     let sum = 0;
 
     function loadTransactions() {
@@ -41,6 +45,15 @@ export default function Historic() {
 
     useEffect(loadTransactions, []);
 
+    function handleChangeContent(transaction, type) {
+        updateTransaction(transaction);
+        if (type === 'deposit') {
+            navigate('/update-deposit');
+        } else {
+            navigate('/update-payment');
+        }
+    }
+
     return (
         <>
             <Header />
@@ -54,9 +67,9 @@ export default function Historic() {
                             {transactions.map(transaction => (
                                 <Transactions key={transaction._id}>
                                     <TransactionsContent type={transaction.type} >
-                                        <div className="group left">
+                                        <div className="group left" onClick={() => handleChangeContent(transaction, transaction.type)}>
                                             <div className="date">{transaction.date}</div>
-                                            <div className="description">{transaction.description}</div>
+                                            <div className="description" >{transaction.description}</div>
                                         </div>
                                         <div className="group right">
                                             <div className="value">{`R$ ${transaction.value}`}</div>

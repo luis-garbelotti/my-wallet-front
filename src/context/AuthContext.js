@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
 
     function login(authData) {
         setAuth(authData);
-        localStorage.setItem('token', JSON.stringify(authData.token));
+        localStorage.setItem("token", JSON.stringify(authData.token));
     }
 
     return (

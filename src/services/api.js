@@ -42,12 +42,30 @@ function getTransactions(token) {
     return promise;
 }
 
+function updateThisDeposit(token, idTransaction, body) {
+    const config = createConfig(token);
+
+    const promise = axios.put(`${BASE_URL}/update-deposit/${idTransaction}`, { body }, config);
+
+    return promise;
+}
+
+function updateThisPayment(token, idTransaction, body) {
+    const config = createConfig(token);
+
+    const promise = axios.put(`${BASE_URL}/update-payment/${idTransaction}`, { body }, config);
+
+    return promise;
+}
+
 const api = {
     register,
     login,
     deposit,
     payment,
-    getTransactions
+    getTransactions,
+    updateThisDeposit,
+    updateThisPayment
 }
 
 export default api;

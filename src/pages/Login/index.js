@@ -13,7 +13,7 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [hidden, setHidden] = useState('hidden');
-    const { login, auth } = useAuth();
+    const { login } = useAuth();
     const navigate = useNavigate();
 
     function handleChange(e) {

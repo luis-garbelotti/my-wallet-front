@@ -8,11 +8,11 @@ export function AuthProvider({ children }) {
 
     function login(authData) {
         setAuth(authData);
-        localStorage.setItem("token", JSON.stringify(authData.token));
+        localStorage.setItem("auth", JSON.stringify(authData));
     }
 
     return (
-        <AuthContext.Provider value={{ auth, login }}>
+        <AuthContext.Provider value={{ auth, login, setAuth }}>
             {children}
         </AuthContext.Provider>
     )

@@ -1,6 +1,8 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Balance from "../../components/Balance";
+import Loading from "../../components/Loading";
+import DeleteButton from "../../components/DeleteButton";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Content, Container, Transactions, TransactionsContent, HeaderTransactions } from './style';
@@ -25,6 +27,7 @@ export default function Historic() {
             const apiTransactions = response.data;
 
             if (apiTransactions.length === 0) {
+                setTransactions([])
                 return;
             }
 
@@ -54,6 +57,10 @@ export default function Historic() {
         }
     }
 
+    if (!transactions) {
+        return <Loading />
+    }
+
     return (
         <>
             <Header />
@@ -73,7 +80,7 @@ export default function Historic() {
                                         </div>
                                         <div className="group right">
                                             <div className="value">{`R$ ${transaction.value}`}</div>
-                                            <button className="delete">X</button>
+                                            <DeleteButton />
                                         </div>
                                     </TransactionsContent>
                                 </Transactions>

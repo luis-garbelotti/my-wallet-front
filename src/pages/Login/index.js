@@ -3,7 +3,7 @@ import { Invalid } from '../../components/Invalid';
 import api from '../../services/api';
 import MyWallet from '../../assets/images/MyWallet.png';
 import { Bars } from 'react-loader-spinner';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
@@ -13,8 +13,14 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [hidden, setHidden] = useState('hidden');
-    const { login } = useAuth();
+    const { auth, login } = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (auth) {
+            navigate('/historic')
+        }
+    }, []);
 
     function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value })

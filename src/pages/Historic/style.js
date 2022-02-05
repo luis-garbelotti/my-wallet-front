@@ -107,11 +107,6 @@ const TransactionsContent = styled.div`
         color: ${(props) => props.type === 'deposit' ? 'green' : 'red'}
     }
 
-    .delete {
-        background: none;
-        color: #C6C6C6;
-    }
-
 `
 
 export {

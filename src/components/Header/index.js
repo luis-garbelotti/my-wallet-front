@@ -1,16 +1,24 @@
 import { Container } from './style';
 import logoutIcon from '../../assets/images/logoutIcon.png';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
 
-    const { auth } = useAuth();
+    const { auth, setAuth } = useAuth();
+    const navigate = useNavigate();
+
+    function logout() {
+        localStorage.clear();
+        setAuth(null)
+        navigate('/');
+    }
 
     return (
         <>
             <Container>
                 Olá, {auth.name}
-                <img src={logoutIcon} alt='logout' />
+                <img src={logoutIcon} alt='logout' onClick={logout} />
             </Container>
         </>
     )

@@ -58,6 +58,14 @@ function updateThisPayment(token, idTransaction, body) {
     return promise;
 }
 
+function deleteTransaction(token, idTransaction) {
+    const config = createConfig(token);
+
+    const promise = axios.delete(`${BASE_URL}/historic/${idTransaction}`, config);
+
+    return promise;
+}
+
 const api = {
     register,
     login,
@@ -65,7 +73,8 @@ const api = {
     payment,
     getTransactions,
     updateThisDeposit,
-    updateThisPayment
+    updateThisPayment,
+    deleteTransaction
 }
 
 export default api;

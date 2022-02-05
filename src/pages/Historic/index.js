@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Content, Container, Transactions, TransactionsContent, HeaderTransactions } from './style';
 import useAuth from "../../hooks/useAuth";
-import useTransaction from '../../hooks/useTransaction'
-import api from '../../services/api'
+import useTransaction from '../../hooks/useTransaction';
+import api from '../../services/api';
 
 export default function Historic() {
 
@@ -80,7 +80,7 @@ export default function Historic() {
                                         </div>
                                         <div className="group right">
                                             <div className="value">{`R$ ${transaction.value}`}</div>
-                                            <DeleteButton />
+                                            <DeleteButton transaction={transaction} loadTransactions={loadTransactions} />
                                         </div>
                                     </TransactionsContent>
                                 </Transactions>

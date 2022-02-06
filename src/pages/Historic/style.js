@@ -104,7 +104,7 @@ const TransactionsContent = styled.div`
 
     .value {
         margin-right: 10px;
-        color: ${(props) => props.type === 'deposit' ? 'green' : 'red'}
+        color: ${(props) => props.type === 'deposit' ? '#4aba1a' : '#c90606'}
     }
 
 `

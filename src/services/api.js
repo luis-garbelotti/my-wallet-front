@@ -45,7 +45,7 @@ function getTransactions(token) {
 function updateThisDeposit(token, idTransaction, body) {
     const config = createConfig(token);
 
-    const promise = axios.put(`${BASE_URL}/update-deposit/${idTransaction}`, { body }, config);
+    const promise = axios.put(`${BASE_URL}/update-deposit/${idTransaction}`, body, config);
 
     return promise;
 }
@@ -53,7 +53,7 @@ function updateThisDeposit(token, idTransaction, body) {
 function updateThisPayment(token, idTransaction, body) {
     const config = createConfig(token);
 
-    const promise = axios.put(`${BASE_URL}/update-payment/${idTransaction}`, { body }, config);
+    const promise = axios.put(`${BASE_URL}/update-payment/${idTransaction}`, body, config);
 
     return promise;
 }

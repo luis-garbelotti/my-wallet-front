@@ -38,10 +38,14 @@ export default function Deposit() {
             setIsLoading(false);
             navigate('/historic');
         });
-        promise.catch(() => {
-            setHidden('');
+        promise.catch((error) => {
             setIsLoading(false);
-            setError('post');
+            if (error.response.status === 422) {
+                setError('inputs');
+            } else {
+                setError('post')
+            }
+            setHidden('');
         });
 
     }

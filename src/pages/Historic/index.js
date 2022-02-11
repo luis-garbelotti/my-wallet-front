@@ -9,6 +9,7 @@ import { Content, Container, Transactions, TransactionsContent, HeaderTransactio
 import useAuth from "../../hooks/useAuth";
 import useTransaction from '../../hooks/useTransaction';
 import api from '../../services/api';
+import Fade from 'react-reveal/Fade';
 
 export default function Historic() {
 
@@ -63,41 +64,42 @@ export default function Historic() {
 
     return (
         <>
-            <Header />
+            <Fade >
+                <Header />
+                <Container>
+                    {haveTransactions ? <HeaderTransactions >Suas transações:</HeaderTransactions> : null}
 
-            <Container>
-                {haveTransactions ? <HeaderTransactions >Suas transações:</HeaderTransactions> : null}
+                    <Content>
+                        {haveTransactions ?
+                            <div>
+                                {transactions.map(transaction => (
+                                    <Transactions key={transaction._id}>
+                                        <TransactionsContent type={transaction.type} >
+                                            <div className="group left" onClick={() => handleChangeContent(transaction, transaction.type)}>
+                                                <div className="date">{transaction.date}</div>
+                                                <div className="description" >{transaction.description}</div>
+                                            </div>
+                                            <div className="group right">
+                                                <div className="value">{`R$ ${transaction.value}`}</div>
+                                                <DeleteButton transaction={transaction} loadTransactions={loadTransactions} />
+                                            </div>
+                                        </TransactionsContent>
+                                    </Transactions>
+                                ))}
+                            </div>
+                            :
+                            <div className={`no-transactions`}>
+                                Não há registros de<br />
+                                entrada ou saída
+                            </div>
+                        }
+                    </Content>
 
-                <Content>
-                    {haveTransactions ?
-                        <div>
-                            {transactions.map(transaction => (
-                                <Transactions key={transaction._id}>
-                                    <TransactionsContent type={transaction.type} >
-                                        <div className="group left" onClick={() => handleChangeContent(transaction, transaction.type)}>
-                                            <div className="date">{transaction.date}</div>
-                                            <div className="description" >{transaction.description}</div>
-                                        </div>
-                                        <div className="group right">
-                                            <div className="value">{`R$ ${transaction.value}`}</div>
-                                            <DeleteButton transaction={transaction} loadTransactions={loadTransactions} />
-                                        </div>
-                                    </TransactionsContent>
-                                </Transactions>
-                            ))}
-                        </div>
-                        :
-                        <div className={`no-transactions`}>
-                            Não há registros de<br />
-                            entrada ou saída
-                        </div>
-                    }
-                </Content>
+                    {haveTransactions ? <Balance balance={balance}></Balance> : null}
 
-                {haveTransactions ? <Balance balance={balance}></Balance> : null}
-
-            </Container>
-            <Footer />
+                </Container>
+                <Footer />
+            </Fade>
         </>
     )
 }

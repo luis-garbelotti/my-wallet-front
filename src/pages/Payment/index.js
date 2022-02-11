@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import Fade from 'react-reveal/Fade';
 
 export default function Deposit() {
 
@@ -51,35 +52,37 @@ export default function Deposit() {
 
     return (
         <>
-            <Container>
-                <Header>Nova Saída</Header>
-                <Content>
-                    <Form onSubmit={handlePayment}>
-                        <Input
-                            type='text'
-                            name='value'
-                            placeholder='Valor ( ex: 100,00 )'
-                            value={paymentData.value}
-                            onChange={handleChange}
-                            disabled={isLoading}
-                        />
-                        <Input
-                            type='text'
-                            name='description'
-                            placeholder='Descrição'
-                            value={paymentData.description}
-                            onChange={handleChange}
-                            disabled={isLoading}
-                        />
-                        <Invalid className={`${hidden}`}>{
-                            error === 'inputs' ? 'Preencha todos os campos corretamente.' :
-                                error === 'post' ? 'Tente novamente.' : null}
-                        </Invalid>
-                        <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Salvar saída'}</Button>
-                        <CancelButton disabled={isLoading} type='button' onClick={() => navigate('/historic')}>Cancelar</CancelButton>
-                    </Form>
-                </Content>
-            </Container>
+            <Fade>
+                <Container>
+                    <Header>Nova Saída</Header>
+                    <Content>
+                        <Form onSubmit={handlePayment}>
+                            <Input
+                                type='text'
+                                name='value'
+                                placeholder='Valor ( ex: 100,00 )'
+                                value={paymentData.value}
+                                onChange={handleChange}
+                                disabled={isLoading}
+                            />
+                            <Input
+                                type='text'
+                                name='description'
+                                placeholder='Descrição'
+                                value={paymentData.description}
+                                onChange={handleChange}
+                                disabled={isLoading}
+                            />
+                            <Invalid className={`${hidden}`}>{
+                                error === 'inputs' ? 'Preencha todos os campos corretamente.' :
+                                    error === 'post' ? 'Tente novamente.' : null}
+                            </Invalid>
+                            <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Salvar saída'}</Button>
+                            <CancelButton disabled={isLoading} type='button' onClick={() => navigate('/historic')}>Cancelar</CancelButton>
+                        </Form>
+                    </Content>
+                </Container>
+            </Fade>
         </>
     )
 }

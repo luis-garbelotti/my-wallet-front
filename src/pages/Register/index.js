@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Bars } from 'react-loader-spinner';
 import api from '../../services/api';
+import Fade from 'react-reveal/Fade';
 
 export default function Register() {
 
@@ -54,56 +55,58 @@ export default function Register() {
 
     return (
         <>
+            <Fade bottom>
+                <Container>
 
-            <Container>
-                <img src={MyWallet} alt="MyWallet" />
+                    <img src={MyWallet} alt="MyWallet" />
 
-                <Form onSubmit={handleSubmit}>
-                    <Input
-                        type='text'
-                        name='name'
-                        placeholder='Nome'
-                        value={formData.name}
-                        onChange={handleChange}
-                        disabled={isLoading}
-                    />
-                    <Input
-                        type='email'
-                        name='email'
-                        placeholder='E-mail'
-                        value={formData.email}
-                        onChange={handleChange}
-                        disabled={isLoading}
-                    />
-                    <Input
-                        type='password'
-                        name='password'
-                        placeholder='Senha'
-                        value={formData.password}
-                        onChange={handleChange}
-                        disabled={isLoading}
-                    />
-                    <Input
-                        type='password'
-                        name='password'
-                        placeholder='Confirme a senha'
-                        value={confirmPassword}
-                        onChange={e => setConfirmPassword(e.target.value)}
-                        disabled={isLoading}
-                    />
-                    <Invalid className={`${hiddenMessage}`}>{
-                        error === 'password' ? 'Confirme sua senha.' :
-                            error === 'inputs' ? 'Preencha todos os campos corretamente.' :
-                                error === 'post' ? 'Tente novamente.' :
-                                    error === 'email' ? 'Email já cadastrado.' : null
-                    } </Invalid>
+                    <Form onSubmit={handleSubmit}>
+                        <Input
+                            type='text'
+                            name='name'
+                            placeholder='Nome'
+                            value={formData.name}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                        />
+                        <Input
+                            type='email'
+                            name='email'
+                            placeholder='E-mail'
+                            value={formData.email}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                        />
+                        <Input
+                            type='password'
+                            name='password'
+                            placeholder='Senha'
+                            value={formData.password}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                        />
+                        <Input
+                            type='password'
+                            name='password'
+                            placeholder='Confirme a senha'
+                            value={confirmPassword}
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            disabled={isLoading}
+                        />
+                        <Invalid className={`${hiddenMessage}`}>{
+                            error === 'password' ? 'Confirme sua senha.' :
+                                error === 'inputs' ? 'Preencha todos os campos corretamente.' :
+                                    error === 'post' ? 'Tente novamente.' :
+                                        error === 'email' ? 'Email já cadastrado.' : null
+                        } </Invalid>
 
-                    <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Cadastrar'}</Button>
+                        <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Cadastrar'}</Button>
 
-                    <StyledLink to='/'>Já tem uma conta? Entre agora!</StyledLink>
-                </Form>
+                        <StyledLink to='/'>Já tem uma conta? Entre agora!</StyledLink>
+                    </Form>
 
-            </Container>
+                </Container>
+            </Fade>
         </>
     )
 }

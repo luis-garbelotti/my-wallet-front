@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from "../../hooks/useAuth";
 import useTransaction from '../../hooks/useTransaction';
+import Fade from 'react-reveal/Fade';
 
 export default function UpdateDeposit() {
 
@@ -59,35 +60,37 @@ export default function UpdateDeposit() {
 
     return (
         <>
-            <Container>
-                <Header>Editar Entrada</Header>
-                <Content>
-                    <Form onSubmit={handleUpdateDeposit}>
-                        <Input
-                            type='text'
-                            name='value'
-                            placeholder='Valor ( ex: 100,00 )'
-                            value={updateDepositData.value}
-                            onChange={handleChange}
-                            disabled={isLoading}
-                        />
-                        <Input
-                            type='text'
-                            name='description'
-                            placeholder='Descrição'
-                            value={updateDepositData.description}
-                            onChange={handleChange}
-                            disabled={isLoading}
-                        />
-                        <Invalid className={`${hidden}`}>{
-                            error === 'inputs' ? 'Preencha todos os campos corretamente.' :
-                                error === 'post' ? 'Tente novamente.' : null}
-                        </Invalid>
-                        <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Atualizar entrada'}</Button>
-                        <CancelButton disabled={isLoading} type='button' onClick={() => navigate('/historic')}>Cancelar</CancelButton>
-                    </Form>
-                </Content>
-            </Container>
+            <Fade>
+                <Container>
+                    <Header>Editar Entrada</Header>
+                    <Content>
+                        <Form onSubmit={handleUpdateDeposit}>
+                            <Input
+                                type='text'
+                                name='value'
+                                placeholder='Valor ( ex: 100,00 )'
+                                value={updateDepositData.value}
+                                onChange={handleChange}
+                                disabled={isLoading}
+                            />
+                            <Input
+                                type='text'
+                                name='description'
+                                placeholder='Descrição'
+                                value={updateDepositData.description}
+                                onChange={handleChange}
+                                disabled={isLoading}
+                            />
+                            <Invalid className={`${hidden}`}>{
+                                error === 'inputs' ? 'Preencha todos os campos corretamente.' :
+                                    error === 'post' ? 'Tente novamente.' : null}
+                            </Invalid>
+                            <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Atualizar entrada'}</Button>
+                            <CancelButton disabled={isLoading} type='button' onClick={() => navigate('/historic')}>Cancelar</CancelButton>
+                        </Form>
+                    </Content>
+                </Container>
+            </Fade>
         </>
     )
 }

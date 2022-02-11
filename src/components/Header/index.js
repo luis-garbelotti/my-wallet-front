@@ -17,7 +17,7 @@ export default function Header() {
     return (
         <>
             <Container>
-                Olá, {auth.name}
+                <p>Olá, {auth.name}</p>
                 <img src={logoutIcon} alt='logout' onClick={logout} />
             </Container>
         </>

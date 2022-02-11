@@ -6,6 +6,7 @@ import { Bars } from 'react-loader-spinner';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import Fade from 'react-reveal/Fade';
 
 export default function Login() {
 
@@ -52,35 +53,37 @@ export default function Login() {
 
     return (
         <>
-            <Container>
-                <img src={MyWallet} alt="MyWallet" />
+            <Fade top >
+                <Container>
 
-                <Form onSubmit={handleSubmit}>
-                    <Input
-                        type='email'
-                        name='email'
-                        placeholder='E-mail'
-                        value={formData.email}
-                        onChange={handleChange}
-                        disabled={isLoading}
-                    />
-                    <Input
-                        type='password'
-                        name='password'
-                        placeholder='Senha'
-                        value={formData.password}
-                        onChange={handleChange}
-                        disabled={isLoading}
-                    />
-                    <Invalid className={`${hidden}`}>{
-                        error === 'inputs' ? 'Preencha todos os campos corretamente.' :
-                            error === 'post' ? 'Email ou senha inválidos.' : null}
-                    </Invalid>
-                    <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Entrar'}</Button>
+                    <img src={MyWallet} alt="MyWallet" />
 
-                    <StyledLink to='/register'>Primeira vez? Cadastre-se!</StyledLink>
-                </Form>
-            </Container>
+                    <Form onSubmit={handleSubmit}>
+                        <Input
+                            type='email'
+                            name='email'
+                            placeholder='E-mail'
+                            value={formData.email}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                        />
+                        <Input
+                            type='password'
+                            name='password'
+                            placeholder='Senha'
+                            value={formData.password}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                        />
+                        <Invalid className={`${hidden}`}>{
+                            error === 'inputs' ? 'Preencha todos os campos corretamente.' :
+                                error === 'post' ? 'Email ou senha inválidos.' : null}
+                        </Invalid>
+                        <Button disabled={isLoading}> {isLoading ? <Bars color="#A328D6" height={50} width={35} /> : 'Entrar'}</Button>
+                        <StyledLink to='/register'>Primeira vez? Cadastre-se!</StyledLink>
+                    </Form>
+                </Container>
+            </Fade>
         </>
     )
 }

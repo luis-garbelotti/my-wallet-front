@@ -3,7 +3,7 @@
 
 Organize your finaces in an easy and pratical way! In this app, you can learn how you spend your money and control your balance.
 
-Try it <a href="my-wallet-front-topaz.vercel.app">here</a>.
+Try it <a href="https://my-wallet-front-topaz.vercel.app" rel="nofollow">here</a>.
 
 ## About
 
